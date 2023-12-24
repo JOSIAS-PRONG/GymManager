@@ -1,0 +1,76 @@
+create database gym;
+use gym;
+
+create table cliente(
+id_cliente int primary key auto_increment,
+nome_cliente varchar(50) not null,
+email_cliente varchar(50) not null,
+cpf_cliente varchar(50) not null,
+idade_cliente int not null,
+observacao varchar(45)
+);
+
+alter table cliente add id_plano varchar(45) not null;
+
+
+
+
+create table funcionario(
+	id_funcionario int primary key auto_increment,
+    nome_funcionario varchar(50) not null,
+    cpf_funcionario varchar(50) not null,
+	email_funcionario varchar(45) not null,
+    idade_funcionario int not null,
+    observacao varchar(45) not null
+);
+
+
+
+
+create table plano(
+id_plano int primary key auto_increment,
+plano_normal varchar(45),
+plano_corporativo varchar(45)
+);
+
+
+
+
+alter table cliente drop column id_plano;
+
+alter table cliente add id_plano int not null;
+
+alter table cliente add constraint fk_plano foreign key(id_plano) references plano(id_plano);
+alter table cliente add senha varchar(45) not null;
+describe cliente;
+alter table funcionario add senha varchar(45) not null;
+*/
+/*
+insert into plano(plano_normal) values("sim");
+
+insert into cliente(nome_cliente,email_cliente, cpf_cliente, idade_cliente, id_plano) values("Josias Abreu", "josiasabreu@alunos.utfpr.edu.br", "123456567", 13, 1);
+
+
+insert into cliente(nome_cliente,email_cliente, cpf_cliente, idade_cliente, id_plano, senha) values("asdf", "asdf", "asdf", 13, 1, "asdf");
+
+insert into funcionario(nome_funcionario, email_funcionario, cpf_funcionario, idade_funcionario, senha, observacao) values("josias", "josias", "000", 1, "josias", "nenhuma");
+
+describe cliente;
+insert into funcionario(nome_funcionario, email_funcionario, cpf_funcionario, idade_funcionario, senha, observacao) values("josias", "josias", "123", 1, "josias", "nenhuma");
+
+insert into plano(plano_normal, id_plano) values("sim", 4);
+
+alter table cliente add plano varchar(45) not null;
+
+ALTER TABLE cliente DROP FOREIGN KEY fk_plano
+
+ALTER TABLE cliente DROP COLUMN id_plano;
+drop table plano
+
+alter table cliente add pagamento varchar(45) not null;
+
+ALTER TABLE funcionario
+ADD COLUMN dataEntrada_funcionario DATE;
+
+alter table cliente
+add column dataEntrada_cliente DATE;
